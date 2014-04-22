@@ -1,2 +1,2 @@
 <?php
-echo "Test file for new branch";
+echo "Change after merge in testbranch.";
