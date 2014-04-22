@@ -6,14 +6,14 @@ echo "ha-ha. It is new branch!!!\n\r";
  */
 function string_stat($str)
 {
-    $res = [];
+    $result = [];
     $len = strlen($str);
     for ($i = 0; $i < $len; $i++) {
-        if (isset($res[$str[$i]]))
-            $res[$str[$i]]++;
-        else $res[$str[$i]] = 1;
+        if (isset($result[$str[$i]]))
+            $result[$str[$i]]++;
+        else $result[$str[$i]] = 1;
     }
-    return $res;
+    return $result;
 }
 
 parse_str(implode('&', array_slice($argv, 1)), $_GET);
