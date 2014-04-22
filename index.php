@@ -20,6 +20,6 @@ parse_str(implode('&', array_slice($argv, 1)), $_GET);
 if (isset($_GET['s']) && ($_GET['s'] != '')) {
     print_r(string_stat($_GET['s']));
 } else {
-    echo "Input please parameter 's' in console. Ex.: \n\r";
+    echo "Input please not empty parameter 's' in command line . Ex.: \n\r";
     echo 'php -f index.php s="it is string"' . "\n\r";
 }
