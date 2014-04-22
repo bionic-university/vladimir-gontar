@@ -1,5 +1,5 @@
 <?php
-echo "Hello!\n\r";
+echo "ha-ha. It is new branch!!!\n\r";
 /**
  * @param $str
  * @return mixed - array - statistics result
