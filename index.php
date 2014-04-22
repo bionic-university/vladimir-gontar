@@ -6,12 +6,12 @@ echo "Hello!\n\r";
  */
 function string_stat($str)
 {
-    $res =[];
+    $res = [];
     $len = strlen($str);
-    for ($i=0; $i<$len;$i++){
+    for ($i = 0; $i < $len; $i++) {
         if (isset($res[$str[$i]]))
             $res[$str[$i]]++;
-        else $res[$str[$i]] =1;
+        else $res[$str[$i]] = 1;
     }
     return $res;
 }
