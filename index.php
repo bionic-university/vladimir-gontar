@@ -10,7 +10,7 @@ function string_stat($str)
     $len = strlen($str);
     for ($i = 0; $i < $len; $i++) {
         if (isset($result[$str[$i]]))
-            $result[$str[$i]]++;
+            $result[$str[$i]]++;// md5 better
         else $result[$str[$i]] = 1;
     }
     return $result;
