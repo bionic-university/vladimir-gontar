@@ -2,6 +2,7 @@
 
 # my files
 private
+private/*
 
 # files
 *.log
