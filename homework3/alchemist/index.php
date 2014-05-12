@@ -32,11 +32,16 @@ $els = array(
     "Md" => "менделевий", "No" => "нобелий", "Lr" => "лоуренсий"
 );
 */
+
 $acid1 = new Acid();
 $acid1->add('H')->add('Cl');
 
-$metal1 = new Metal();
-$metal1->add('Na');
+$metal1 = new Metal('Na');
+var_dump($metal1->beforeH);
 
 $alchemist = new Alchemist();
-$alchemist->dissolve($acid1, $metal1);
+if ($alchemist->dissolve($acid1, $metal1)) {
+    echo 'successfully' . PHP_EOL;
+} else {
+    echo 'fail' . PHP_EOL;
+}

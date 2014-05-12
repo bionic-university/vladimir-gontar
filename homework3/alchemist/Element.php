@@ -8,9 +8,20 @@
  */
 class Element
 {
+    /**
+     * @var array
+     */
     public $elements = array();
+    /**
+     * @var
+     */
     public $name;
 
+    /**
+     * @param $atomName
+     * @param int $count
+     * @return $this
+     */
     public function add($atomName, $count = 1)
     {
         //TODO check if exist $atomName
@@ -18,6 +29,9 @@ class Element
         return $this;
     }
 
+    /**
+     * @return string
+     */
     public function view()
     {
         $res = '';
