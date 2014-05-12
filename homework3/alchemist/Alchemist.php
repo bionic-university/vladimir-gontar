@@ -1,9 +1,11 @@
 <?php
+include_once('AbstractElement.php');
+include_once('Element.php');
 include_once('Acid.php');
 include_once('Gas.php');
 include_once('Metal.php');
 include_once('Salt.php');
-include_once('Element.php');
+
 include_once('iAlchemist.php');
 
 /**

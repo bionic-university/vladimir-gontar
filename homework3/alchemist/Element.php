@@ -6,14 +6,14 @@
  * Date: 11.05.14
  * Time: 16:24
  */
-class Element
+class Element extends AbstractElement
 {
     /**
      * @var array
      */
     public $elements = array();
     /**
-     * @var
+     * @var string
      */
     public $name;
 
