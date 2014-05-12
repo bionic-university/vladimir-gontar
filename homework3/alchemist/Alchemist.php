@@ -23,6 +23,7 @@ class Alchemist implements iAlchemist
         $res = true;
         if (false === $metal->beforeH) {
             $res = false;
+            // TODO Взаимодействие серной кислоты H2SO4 с металлами
         } else {
             $gas = new Gas();
             $gas->add('H', 2);

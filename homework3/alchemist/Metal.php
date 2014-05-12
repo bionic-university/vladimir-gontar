@@ -13,7 +13,7 @@ class Metal extends Element
     /**
      * @param $atomName
      */
-    function __construct($atomName)
+    public function __construct($atomName)
     {
         $metalRow = array(
             'Li', 'Rb', 'K', 'Ba', 'Sr', 'Ca', 'Na', 'Mg', 'Al', 'Mn', 'Zn', 'Cr', 'Fe', 'Cd', 'Co', 'Ni', 'Sn', 'Pb', 'H', 'Sb', 'Bi', 'Cu', 'Hg', 'Ag', 'Pd', 'Pt', 'Au'
