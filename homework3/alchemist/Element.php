@@ -1,18 +1,32 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: volodya
  * Date: 11.05.14
  * Time: 16:24
  */
-
-class Element {
-    public $number;
+class Element
+{
+    public $elements = array();
     public $name;
 
-    function __construct($name, $number=1)
+    public function add($atomName, $count = 1)
     {
-        $this->name = $name;
-        $this->number = $number;
+        //TODO check if exist $atomName
+        array_push($this->elements, array('atomName' => $atomName, 'count' => $count));
+        return $this;
+    }
+
+    public function view()
+    {
+        $res = '';
+        foreach ($this->elements as $element) {
+            $res .= $element['atomName'];
+            if ($element['count'] > 1) {
+                $res .= $element['count'];
+            }
+        }
+        return $res;
     }
 }

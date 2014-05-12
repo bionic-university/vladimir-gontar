@@ -1,5 +1,6 @@
 <?php
-class Metal
+
+class Metal extends Element
 {
 
 }
