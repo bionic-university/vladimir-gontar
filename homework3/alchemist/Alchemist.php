@@ -20,9 +20,9 @@ class Alchemist implements iAlchemist
         $gas->add('H', 2);
         $salt = new Salt();
         $salt->add($metal->elements[0]['atomName']);
-        $oxide = $acid->elements;
-        array_shift($oxide);
-        $salt->elements = array_merge($salt->elements, $oxide);
+        $rest = $acid->elements;
+        array_shift($rest);
+        $salt->elements = array_merge($salt->elements, $rest);
         echo $acid->view() . ' + ' . $metal->view() . ' = ' . $salt->view() . ' + ' . $gas->view() . PHP_EOL;
         $isReversible = (time() % 10 == 0);
         if ($isReversible) {
