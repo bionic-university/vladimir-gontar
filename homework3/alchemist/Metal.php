@@ -16,7 +16,7 @@ class Metal extends Element
     function __construct($atomName)
     {
         $metalRow = array(
-            'Li','Rb','K','Ba','Sr','Ca','Na','Mg','Al','Mn','Zn','Cr','Fe','Cd','Co','Ni','Sn','Pb','H','Sb','Bi','Cu','Hg','Ag','Pd','Pt','Au'
+            'Li', 'Rb', 'K', 'Ba', 'Sr', 'Ca', 'Na', 'Mg', 'Al', 'Mn', 'Zn', 'Cr', 'Fe', 'Cd', 'Co', 'Ni', 'Sn', 'Pb', 'H', 'Sb', 'Bi', 'Cu', 'Hg', 'Ag', 'Pd', 'Pt', 'Au'
         );
         $this->add($atomName);
         if (array_search($atomName, $metalRow) < 18) {

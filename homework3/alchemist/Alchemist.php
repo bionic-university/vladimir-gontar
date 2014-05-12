@@ -21,7 +21,7 @@ class Alchemist implements iAlchemist
     public function dissolve($acid, $metal)
     {
         $res = true;
-        if (false === $metal->beforeH){
+        if (false === $metal->beforeH) {
             $res = false;
         } else {
             $gas = new Gas();
