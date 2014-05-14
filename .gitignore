@@ -7,3 +7,4 @@ private/*
 # files
 *.log
 /vendor/
+/composer.phar

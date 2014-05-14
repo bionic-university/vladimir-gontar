@@ -1,10 +1,10 @@
 <?php
-include 'DoorClass.php';
-include 'WindowClass.php';
-include 'FloorClass.php';
-include 'RoofClass.php';
-include 'RoomClass.php';
-include 'HouseClass.php';
+include __DIR__ . '/../src/BionicUniversity/VladimirGontar/House/DoorClass.php';
+include __DIR__ . '/../src/BionicUniversity/VladimirGontar/House/WindowClass.php';
+include __DIR__ . '/../src/BionicUniversity/VladimirGontar/House/FloorClass.php';
+include __DIR__ . '/../src/BionicUniversity/VladimirGontar/House/RoofClass.php';
+include __DIR__ . '/../src/BionicUniversity/VladimirGontar/House/RoomClass.php';
+include __DIR__ . '/../src/BionicUniversity/VladimirGontar/House/HouseClass.php';
 
 $door1 = new DoorClass('green', 2, 'metal', 300.3, 20.3, 2);
 $door2 = new DoorClass('black', 2, 'metal', 300.3, 20.3, 2);

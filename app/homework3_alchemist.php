@@ -6,7 +6,7 @@
  * Time: 14:07
  * To change this template use File | Settings | File Templates.
  */
-include_once('Alchemist.php');
+include_once(__DIR__ . '/../src/BionicUniversity/VladimirGontar/Alchemist/Alchemist.php');
 //2 HCl + 2 Na       =        2 NaCl        +        H2
 /*
 $els = array(

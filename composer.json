@@ -1,0 +1,12 @@
+{
+    "name": "volodya/vladimir-gontar",
+    "authors": [
+        {
+            "name": "Vladimir Gontar",
+            "email": "volodyawork@gmail.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "*"
+    }
+}
