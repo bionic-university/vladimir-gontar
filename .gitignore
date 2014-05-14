@@ -6,3 +6,4 @@ private/*
 
 # files
 *.log
+/vendor/
