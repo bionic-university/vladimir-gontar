@@ -7,6 +7,7 @@
         }
     ],
     "require": {
-        "phpunit/phpunit": "*"
+        "phpunit/phpunit": "*",
+        "symfony/class-loader": "2.4.x-dev"
     }
 }
