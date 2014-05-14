@@ -102,6 +102,6 @@ class Resizer extends AbstractResizer implements ImageInterface
      */
     public function getCenterCoordinates()
     {
-        return array(ceil($this->width/2), ceil($this->height/2));
+        return array(ceil($this->width / 2), ceil($this->height / 2));
     }
 } 
