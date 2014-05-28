@@ -1,11 +1,18 @@
 .idea
+coverage
+.DS_Store
+.netbeans
+desktop.ini
 
 # my files
 private
 private/*
 
 # files
+app/cache
+app/logs
+app/build
 *.log
 /vendor/
 /composer.phar
-/symfonyProject/
+cache.properties
