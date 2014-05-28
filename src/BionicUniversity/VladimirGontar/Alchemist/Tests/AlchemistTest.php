@@ -9,10 +9,11 @@ use BionicUniversity\VladimirGontar\Alchemist\Alchemist;
  */
 class AlchemistTest extends \PHPUnit_Framework_TestCase
 {
-    /*
+
     public function testDissolve()
     {
-        //assertEquals();
+        // TODO !
+        $this->assertEquals(1, 1);
     }
-    */
+
 }
