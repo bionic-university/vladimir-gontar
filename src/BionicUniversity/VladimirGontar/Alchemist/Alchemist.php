@@ -1,4 +1,6 @@
 <?php
+namespace BionicUniversity\VladimirGontar\Alchemist;
+
 include_once('AbstractElement.php');
 include_once('Element.php');
 include_once('Acid.php');

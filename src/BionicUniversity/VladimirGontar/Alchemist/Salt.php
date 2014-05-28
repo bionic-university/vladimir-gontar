@@ -1,4 +1,6 @@
 <?php
+namespace BionicUniversity\VladimirGontar\Alchemist;
+
 include_once('iWeCanEat.php');
 
 /**

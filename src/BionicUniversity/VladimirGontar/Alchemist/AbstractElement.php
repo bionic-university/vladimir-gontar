@@ -1,4 +1,5 @@
 <?php
+namespace BionicUniversity\VladimirGontar\Alchemist;
 
 /**
  * Class AbstractElement
