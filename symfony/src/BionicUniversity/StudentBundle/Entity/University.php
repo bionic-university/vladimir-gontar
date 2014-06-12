@@ -33,11 +33,20 @@ class University
      */
     private $yearOfFundation;
 
+    /**
+     * @var
+     */
+    private $faculties;
+
+    public function getFaculties()
+    {
+        return $this->faculties;
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -60,7 +69,7 @@ class University
     /**
      * Get fullName
      *
-     * @return string 
+     * @return string
      */
     public function getFullName()
     {
@@ -83,7 +92,7 @@ class University
     /**
      * Get shortName
      *
-     * @return string 
+     * @return string
      */
     public function getShortName()
     {
@@ -106,7 +115,7 @@ class University
     /**
      * Get accreditationLevel
      *
-     * @return integer 
+     * @return integer
      */
     public function getaccreditationLevel()
     {
@@ -129,7 +138,7 @@ class University
     /**
      * Get yearOfFundation
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getYearOfFundation()
     {

@@ -1,0 +1,30 @@
+BionicUniversityгод
+2014
+страна
+Великобритания, Германия
+слоган	-
+режиссер	Уэс Андерсон
+сценарий	Уэс Андерсон, Стефан Цвейг, Хьюго Гиннесс
+продюсер	Уэс Андерсон, Джереми Доусон, Стивен Рейлс, ...
+оператор	Роберт Д. Йоумен
+композитор	Александр Депла
+художник	Адам Штокхаузен, Штефан О. Гесслер, Нэйтан Паркер, ...
+монтаж	Барни Пиллинг
+жанр\NewsBundle\Entity\Tag:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: text
+        count:
+            type: bigint
+    lifecycleCallbacks: {  }

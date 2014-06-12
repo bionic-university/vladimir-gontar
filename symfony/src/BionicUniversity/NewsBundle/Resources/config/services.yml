@@ -1,0 +1,7 @@
+parameters:
+#    bionic_university_news.example.class: BionicUniversity\NewsBundle\Example
+
+services:
+#    bionic_university_news.example:
+#        class: %bionic_university_news.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

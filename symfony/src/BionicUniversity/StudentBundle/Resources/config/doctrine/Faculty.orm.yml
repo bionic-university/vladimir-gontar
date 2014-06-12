@@ -1,0 +1,28 @@
+BionicUniversity\StudentBundle\Entity\Faculty:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        fullName:
+            type: string
+            length: 255
+        shortName:
+            type: string
+            length: 255
+            unique: true
+            nullable: true
+
+    manyToOne:
+        university:
+            targetEntity: BionicUniversity\StudentBundle\Entity\University
+            inversedBy: faculties
+    oneToMany:
+        cafedries:
+            targetEntity: BionicUniversity\StudentBundle\Entity\Cafedra
+            mappedBy: faculty
+    lifecycleCallbacks: {  }

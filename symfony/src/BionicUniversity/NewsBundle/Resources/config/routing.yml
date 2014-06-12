@@ -1,0 +1,8 @@
+bionic_university_news_article:
+    resource: "@BionicUniversityNewsBundle/Resources/config/routing/article.yml"
+    prefix:   /article
+BionicUniversityNewsBundle_tag:
+        resource: "@BionicUniversityNewsBundle/Resources/config/routing/tag.yml"
+        prefix:   /tag
+
+
