@@ -14,5 +14,4 @@ app/logs
 app/build
 *.log
 /vendor/
-/composer.phar
 cache.properties

@@ -16,6 +16,51 @@ class ArticleController extends Controller
 {
 
     /**
+     * Lists all Article of Tag entities.
+     *
+     */
+    public function tagAction($tag)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $tagEntity = $em->getRepository('BionicUniversityNewsBundle:Tag')->find($tag);
+
+        $tasAr = $tagEntity->getTas();
+        $articles = array();
+
+        foreach ($tasAr as $ta){
+            $articles[] = $em->getRepository('BionicUniversityNewsBundle:Article')->find($ta->getArticleId());
+        }
+
+        $entities = $articles;
+
+        //$entities = $em->getRepository('BionicUniversityNewsBundle:Article')->findBy(array('tag'=> $tag));
+
+        return $this->render('BionicUniversityNewsBundle:Article:index.html.twig', array(
+            'entities' => $entities,
+            'tag'=>$tagEntity,
+        ));
+    }
+
+    /**
+     * Lists all Article of Category entities.
+     *
+     */
+    public function categoryAction($category)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('BionicUniversityNewsBundle:Article')->findBy(array('categoryId' => $category));
+
+        $categoryEntity = $em->getRepository('BionicUniversityNewsBundle:Category')->find($category);
+        return $this->render('BionicUniversityNewsBundle:Article:index.html.twig', array(
+            'entities' => $entities,
+            'category' => $categoryEntity,
+        ));
+    }
+
+
+    /**
      * Lists all Article entities.
      *
      */
@@ -29,6 +74,7 @@ class ArticleController extends Controller
             'entities' => $entities,
         ));
     }
+
     /**
      * Creates a new Article entity.
      *
@@ -49,17 +95,17 @@ class ArticleController extends Controller
 
         return $this->render('BionicUniversityNewsBundle:Article:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ));
     }
 
     /**
-    * Creates a form to create a Article entity.
-    *
-    * @param Article $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to create a Article entity.
+     *
+     * @param Article $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createCreateForm(Article $entity)
     {
         $form = $this->createForm(new ArticleType(), $entity, array(
@@ -79,11 +125,11 @@ class ArticleController extends Controller
     public function newAction()
     {
         $entity = new Article();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return $this->render('BionicUniversityNewsBundle:Article:new.html.twig', array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         ));
     }
 
@@ -103,9 +149,15 @@ class ArticleController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
 
+        $category = $em->getRepository('BionicUniversityNewsBundle:Category')->find($entity->getCategoryId());
+
+        $tags = $entity->getTag();
+
         return $this->render('BionicUniversityNewsBundle:Article:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+            'entity' => $entity,
+            'category' => $category,
+            'tags' => $tags,
+            'delete_form' => $deleteForm->createView(),));
     }
 
     /**
@@ -126,19 +178,19 @@ class ArticleController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('BionicUniversityNewsBundle:Article:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
 
     /**
-    * Creates a form to edit a Article entity.
-    *
-    * @param Article $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Article entity.
+     *
+     * @param Article $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Article $entity)
     {
         $form = $this->createForm(new ArticleType(), $entity, array(
@@ -150,6 +202,7 @@ class ArticleController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Article entity.
      *
@@ -164,22 +217,30 @@ class ArticleController extends Controller
             throw $this->createNotFoundException('Unable to find Article entity.');
         }
 
+        $previousCollections = $entity->getTas();
+        $previousCollections = $previousCollections->toArray();
+        foreach ($previousCollections as $ta) {
+            $entity->removeTa($ta);
+        }
+
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+
             $em->flush();
 
             return $this->redirect($this->generateUrl('article_edit', array('id' => $id)));
         }
 
         return $this->render('BionicUniversityNewsBundle:Article:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Article entity.
      *
@@ -217,7 +278,6 @@ class ArticleController extends Controller
             ->setAction($this->generateUrl('article_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

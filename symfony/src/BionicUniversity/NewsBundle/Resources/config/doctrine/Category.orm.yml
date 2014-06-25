@@ -1,0 +1,37 @@
+BionicUniversity\NewsBundle\Entity\Category:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        description:
+            type: text
+            nullable: true
+        count:
+            type: bigint
+            nullable: true
+        parentId:
+            type: integer
+            nullable: true
+    lifecycleCallbacks: {  }
+    oneToMany:
+        children:
+            targetEntity: Category
+            mappedBy: parent
+        articles:
+            targetEntity: BionicUniversity\NewsBundle\Entity\Article
+            mappedBy: category
+    manyToOne:
+        parent:
+            targetEntity: Category
+            inversedBy: children
+            JoinColumn:
+                name: parent_id
+                referencedColumnName: id

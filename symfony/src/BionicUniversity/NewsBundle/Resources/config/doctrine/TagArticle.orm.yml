@@ -1,0 +1,28 @@
+BionicUniversity\NewsBundle\Entity\TagArticle:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        tagId:
+            type: integer
+        articleId:
+            type: integer
+    lifecycleCallbacks: {  }
+    manyToOne:
+        article:
+            targetEntity: BionicUniversity\NewsBundle\Entity\Article
+            inversedBy: tas
+            joinColumn:
+                name: article_id
+                referencedColumnName: id
+        tag:
+            targetEntity: BionicUniversity\NewsBundle\Entity\Tag
+            inversedBy: tas
+            joinColumn:
+                name: tag_id
+                referencedColumnName: id

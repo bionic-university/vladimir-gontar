@@ -13,10 +13,32 @@ BionicUniversity\NewsBundle\Entity\Article:
             length: 255
         excerpt:
             type: text
-        article:
+            nullable: true
+        content:
             type: text
+            nullable: true
         status:
             type: integer
+            nullable: true
         author:
             type: integer
+            nullable: true
+        categoryId:
+            type: integer
+            nullable: true
     lifecycleCallbacks: {  }
+    oneToMany:
+        tas:
+            targetEntity: BionicUniversity\NewsBundle\Entity\TagArticle
+            mappedBy: article
+            cascade: [persist]
+            orphanRemoval: true
+    manyToOne:
+        category:
+            targetEntity: BionicUniversity\NewsBundle\Entity\Category
+            inversedBy: articles
+            JoinColumn:
+                name: category_id
+                referencedColumnName: id
+
+

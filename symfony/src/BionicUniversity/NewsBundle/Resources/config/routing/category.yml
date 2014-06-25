@@ -1,0 +1,30 @@
+category:
+    pattern:  /
+    defaults: { _controller: "BionicUniversityNewsBundle:Category:index" }
+
+category_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "BionicUniversityNewsBundle:Category:show" }
+
+category_new:
+    pattern:  /new
+    defaults: { _controller: "BionicUniversityNewsBundle:Category:new" }
+
+category_create:
+    pattern:  /create
+    defaults: { _controller: "BionicUniversityNewsBundle:Category:create" }
+    requirements: { _method: post }
+
+category_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BionicUniversityNewsBundle:Category:edit" }
+
+category_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BionicUniversityNewsBundle:Category:update" }
+    requirements: { _method: post|put }
+
+category_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BionicUniversityNewsBundle:Category:delete" }
+    requirements: { _method: post|delete }

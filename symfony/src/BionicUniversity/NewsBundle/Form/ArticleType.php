@@ -17,9 +17,24 @@ class ArticleType extends AbstractType
         $builder
             ->add('name')
             ->add('excerpt')
-            ->add('article')
-            ->add('status')
-            ->add('author')
+            ->add('content')
+            //->add('status')
+            //->add('author')
+            ->add('Category', 'entity', array(
+                'class'    => 'BionicUniversityNewsBundle:Category',
+                'property' => 'name',
+                'expanded' => false,
+                'multiple' => false,
+                'label'  => 'Выберите категорию:',
+            ))
+            ->add('Tag', 'entity', array(
+                'class'    => 'BionicUniversityNewsBundle:Tag',
+                'property' => 'name',
+                'expanded' => false,
+                'multiple' => true,
+                'label'  => 'Выберите теги:',
+            ))
+
         ;
     }
     
@@ -29,7 +44,8 @@ class ArticleType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'BionicUniversity\NewsBundle\Entity\Article'
+            'data_class' => 'BionicUniversity\NewsBundle\Entity\Article',
+            //'em' => '',
         ));
     }
 

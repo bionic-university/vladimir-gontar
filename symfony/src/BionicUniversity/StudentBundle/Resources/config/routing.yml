@@ -1,9 +1,0 @@
-bionic_university_student_homepage:
-    pattern:  /
-    defaults: { _controller: BionicUniversityStudentBundle:Default:index }
-BionicUniversityStudentBundle_university:
-    resource: "@BionicUniversityStudentBundle/Resources/config/routing/university.yml"
-    prefix:   /university
-BionicUniversityStudentBundle_faculty:
-    resource: "@BionicUniversityStudentBundle/Resources/config/routing/faculty.yml"
-    prefix:   /faculty

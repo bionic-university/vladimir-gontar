@@ -2,6 +2,7 @@
 
 namespace BionicUniversity\NewsBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -27,7 +28,7 @@ class Article
     /**
      * @var string
      */
-    private $article;
+    private $content;
 
     /**
      * @var integer
@@ -38,6 +39,62 @@ class Article
      * @var integer
      */
     private $author;
+
+    /**
+     * @var integer
+     */
+    private $categoryId;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $tas;
+
+    /**
+     * @var \BionicUniversity\NewsBundle\Entity\Category
+     */
+    private $category;
+
+    public $tag;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tas = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tag = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    public function getTag()
+    {
+        $tags = new ArrayCollection();
+        foreach ($this->tas as $ta) {
+            $tags[] = $ta->getTag();
+        }
+        return $tags;
+    }
+
+    public function setTag($tag)
+    {
+        foreach ($tag as $oneTag) {
+            $ta = new TagArticle();
+            $ta->setTag($oneTag);
+            $ta->setArticle($this);
+
+            $this->addTa($ta);
+        }
+    }
+
+    public function getArticle()
+    {
+        return $this;
+    }
 
     /**
      * Get id
@@ -96,26 +153,26 @@ class Article
     }
 
     /**
-     * Set article
+     * Set content
      *
-     * @param string $article
+     * @param string $content
      * @return Article
      */
-    public function setArticle($article)
+    public function setContent($content)
     {
-        $this->article = $article;
+        $this->content = $content;
 
         return $this;
     }
 
     /**
-     * Get article
+     * Get content
      *
      * @return string
      */
-    public function getArticle()
+    public function getContent()
     {
-        return $this->article;
+        return $this->content;
     }
 
     /**
@@ -141,7 +198,6 @@ class Article
         return $this->status;
     }
 
-
     /**
      * Set author
      *
@@ -163,5 +219,84 @@ class Article
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Set categoryId
+     *
+     * @param integer $categoryId
+     * @return Article
+     */
+    public function setCategoryId($categoryId)
+    {
+        $this->categoryId = $categoryId;
+
+        return $this;
+    }
+
+    /**
+     * Get categoryId
+     *
+     * @return integer
+     */
+    public function getCategoryId()
+    {
+        return $this->categoryId;
+    }
+
+    /**
+     * Add tas
+     *
+     * @param \BionicUniversity\NewsBundle\Entity\TagArticle $tas
+     * @return Article
+     */
+    public function addTa(\BionicUniversity\NewsBundle\Entity\TagArticle $tas)
+    {
+        $this->tas[] = $tas;
+
+        return $this;
+    }
+
+    /**
+     * Remove tas
+     *
+     * @param \BionicUniversity\NewsBundle\Entity\TagArticle $tas
+     */
+    public function removeTa(\BionicUniversity\NewsBundle\Entity\TagArticle $tas)
+    {
+        $this->tas->removeElement($tas);
+    }
+
+    /**
+     * Get tas
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTas()
+    {
+        return $this->tas;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \BionicUniversity\NewsBundle\Entity\Category $category
+     * @return Article
+     */
+    public function setCategory(\BionicUniversity\NewsBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \BionicUniversity\NewsBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

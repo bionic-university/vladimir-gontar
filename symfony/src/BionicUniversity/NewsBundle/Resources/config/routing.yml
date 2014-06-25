@@ -1,8 +1,12 @@
-bionic_university_news_article:
+bionic_university_news_homepage:
+    pattern:  /
+    defaults: { _controller: BionicUniversityNewsBundle:Article:index }
+BionicUniversityNewsBundle_tag:
+    resource: "@BionicUniversityNewsBundle/Resources/config/routing/tag.yml"
+    prefix:   /tag
+BionicUniversityNewsBundle_article:
     resource: "@BionicUniversityNewsBundle/Resources/config/routing/article.yml"
     prefix:   /article
-BionicUniversityNewsBundle_tag:
-        resource: "@BionicUniversityNewsBundle/Resources/config/routing/tag.yml"
-        prefix:   /tag
-
-
+BionicUniversityNewsBundle_category:
+    resource: "@BionicUniversityNewsBundle/Resources/config/routing/category.yml"
+    prefix:   /category

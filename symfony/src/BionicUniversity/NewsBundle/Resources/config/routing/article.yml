@@ -28,3 +28,11 @@ article_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "BionicUniversityNewsBundle:Article:delete" }
     requirements: { _method: post|delete }
+
+article_category:
+    pattern:  /category/{category}
+    defaults: { _controller: "BionicUniversityNewsBundle:Article:category" }
+
+article_tag:
+    pattern:  /tag/{tag}
+    defaults: { _controller: "BionicUniversityNewsBundle:Article:tag" }
