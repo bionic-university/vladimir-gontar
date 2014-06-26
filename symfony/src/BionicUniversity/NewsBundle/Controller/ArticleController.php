@@ -28,8 +28,13 @@ class ArticleController extends Controller
         $tasAr = $tagEntity->getTas();
         $articles = array();
 
+        $aIds = array();
         foreach ($tasAr as $ta){
-            $articles[] = $em->getRepository('BionicUniversityNewsBundle:Article')->find($ta->getArticleId());
+            $aIds[] = $ta->getArticleId();
+        }
+        rsort($aIds);
+        foreach ($aIds as $id){
+            $articles[] = $em->getRepository('BionicUniversityNewsBundle:Article')->find($id);
         }
 
         $entities = $articles;
