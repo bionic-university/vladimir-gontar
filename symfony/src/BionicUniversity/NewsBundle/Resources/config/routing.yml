@@ -10,3 +10,6 @@ BionicUniversityNewsBundle_article:
 BionicUniversityNewsBundle_category:
     resource: "@BionicUniversityNewsBundle/Resources/config/routing/category.yml"
     prefix:   /category
+admin_index:
+    pattern:  /admin
+    defaults: { _controller: "BionicUniversityNewsBundle:Admin:adminMainPage" }

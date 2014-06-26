@@ -6,15 +6,16 @@
     <!-- Mobile viewport optimisation -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% block stylesheets %}
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css"/>
         <link href="{{ asset('css/flexible-columns.css') }}" rel="stylesheet" type="text/css"/>
         <!--[if lte IE 7]>
-        <link href="{{ asset('yaml/core/iehacks.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('yaml/core/iehacks.css') }}" rel="stylesheet" type="text/css"/>
         <![endif]-->
         <!--[if lt IE 9]>
         <script src="{{ asset('js/lib/html5shiv/html5shiv.js') }}"></script>
         <![endif]-->
     {% endblock %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 </head>
 <body>
 <ul class="ym-skiplinks">
@@ -25,23 +26,43 @@
 <div class="ym-wrapper">
     <div class="ym-wbox">
         <header>
-            <h1><a href="/">Новострой портал</a></h1>
+            <h1><a href="/">Новостной портал</a></h1>
         </header>
-        <nav id="nav">
-            <div class="ym-hlist" >
+        {% block menu %}
+            <nav id="nav">
+                <div class="ym-hlist">
+                    <ul>
+                        <!--li class="active"><strong>Active</strong></li-->
+                        <li><a href="/article/category/2">Политика</a></li>
+                        <li><a href="/article/category/3">Культура</a></li>
+                        <li><a href="/article/category/4">Киев</a></li>
+                    </ul>
+                    <!--form class="ym-searchform">
+                        <input class="ym-searchfield" type="search" placeholder="Search..." />
+                        <input class="ym-searchbutton" type="submit" value="Search" />
+                    </form-->
+                </div>
+            </nav>
+        {% endblock %}
+
+        {% if is_granted('ROLE_ADMIN') %}
+            <div class="ym-hlist">
                 <ul>
-                    <li class="active"><strong>Active</strong></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
+                    <li><a href="{{ path('article_new') }}">Create article</a></li>
+                    <li><a href="{{ path('tag_new') }}">Create tag</a></li>
+                    <li><a href="{{ path('category_new') }}">Create category</a></li>
+                    <li><a href="{{ path('logout') }}">LOGOUT</a></li>
                 </ul>
-                <form class="ym-searchform">
-                    <input class="ym-searchfield" type="search" placeholder="Search..." />
-                    <input class="ym-searchbutton" type="submit" value="Search" />
-                </form>
             </div>
-        </nav>
+            {% else %}
+                <div class="ym-hlist">
+                    <ul>
+                        <li><a href="{{ path('login_path') }}">Авторизация</a></li>
+                    </ul>
+                </div>
+
+        {% endif %}
+
         <main>
             <div class="ym-column linearize-level-1">
                 <div class="ym-col1">
@@ -57,7 +78,7 @@
                 </div>
                 <aside class="ym-col3">
                     <div class="ym-cbox">
-                        <h2>Sidebar</h2>
+                        <!--h2>Sidebar</h2>
                         <h4>Advertisement</h4>
                         <div class="ym-contain-dt">
                             <img src="http://dummyimage.com/128x128/cccccc/fff.png" alt="ads" class="float-left bordered"/>
@@ -66,14 +87,12 @@
                             <img src="http://dummyimage.com/128x128/cccccc/fff.png" alt="ads" class="float-left bordered"/>
                             <img src="http://dummyimage.com/128x128/cccccc/fff.png" alt="ads" class="float-left bordered"/>
                             <img src="http://dummyimage.com/128x128/cccccc/fff.png" alt="ads" class="float-left bordered"/>
-                        </div>
-                        <h4>Widget</h4>
+                        </div-->
+                        <h4>Теги</h4>
                         <ul>
-                            <li>Item 1</li>
-                            <li>Item 2</li>
-                            <li>Item 3</li>
-                            <li>Item 4</li>
-                            <li>Item 5</li>
+                            <li><a href="/article/tag/1">война</a></li>
+                            <li><a href="/article/tag/2">смешно</a></li>
+                            <li><a href="/article/tag/3">религия</a></li>
                         </ul>
                     </div>
                 </aside>

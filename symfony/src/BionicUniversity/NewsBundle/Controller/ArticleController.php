@@ -50,7 +50,7 @@ class ArticleController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('BionicUniversityNewsBundle:Article')->findBy(array('categoryId' => $category));
+        $entities = $em->getRepository('BionicUniversityNewsBundle:Article')->findBy(array('categoryId' => $category), array('id' => 'DESC'));
 
         $categoryEntity = $em->getRepository('BionicUniversityNewsBundle:Category')->find($category);
         return $this->render('BionicUniversityNewsBundle:Article:index.html.twig', array(
@@ -68,7 +68,7 @@ class ArticleController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('BionicUniversityNewsBundle:Article')->findAll();
+        $entities = $em->getRepository('BionicUniversityNewsBundle:Article')->findBy(array(), array('id' => 'DESC'));
 
         return $this->render('BionicUniversityNewsBundle:Article:index.html.twig', array(
             'entities' => $entities,
@@ -139,6 +139,7 @@ class ArticleController extends Controller
      */
     public function showAction($id)
     {
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BionicUniversityNewsBundle:Article')->find($id);
@@ -153,10 +154,13 @@ class ArticleController extends Controller
 
         $tags = $entity->getTag();
 
+        $showEdit = $this->get('security.context')->isGranted('ROLE_ADMIN');
+
         return $this->render('BionicUniversityNewsBundle:Article:show.html.twig', array(
             'entity' => $entity,
             'category' => $category,
             'tags' => $tags,
+            'showEdit'=>$showEdit,
             'delete_form' => $deleteForm->createView(),));
     }
 

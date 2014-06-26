@@ -81,7 +81,16 @@ class NewsFixtures implements FixtureInterface
         $article4->setStatus(1);
         $article4->setAuthor(1);
         $manager->persist($article4);
-        
+
+        $article5 = new Article();
+        $article5->setName('Новость 5');
+        $article5->setExcerpt('Это краткое описание новости 5');
+        $article5->setContent('Здесь полное описание новости 5. Здесь полное описание новости 5. Здесь полное описание новости 5. Здесь полное описание новости 5. Здесь полное описание новости 5. Здесь полное описание новости 5. Здесь полное описание новости 5. Здесь полное описание новости 5. Здесь полное описание новости 5. Здесь полное описание новости 5. ');
+        $article5->setCategory($category4);
+        $article5->setStatus(1);
+        $article5->setAuthor(1);
+        $manager->persist($article5);
+
         $tagArticle1 = new TagArticle();
         $tagArticle1->setTag($tag1);
         $tagArticle1->setArticle($article1);
@@ -96,7 +105,12 @@ class NewsFixtures implements FixtureInterface
         $tagArticle3->setTag($tag2);
         $tagArticle3->setArticle($article1);
         $manager->persist($tagArticle3);
-        
+
+        $tagArticle4 = new TagArticle();
+        $tagArticle4->setTag($tag3);
+        $tagArticle4->setArticle($article5);
+        $manager->persist($tagArticle3);
+
         $manager->flush();
 
 

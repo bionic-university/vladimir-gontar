@@ -1,0 +1,26 @@
+## Security Configuration
+security:
+    encoders:
+        BionicUniversity\UserBundle\Entity\User.php:
+            algorithm: sha512
+            encode-as-base64: true
+            iterations: 10
+
+    providers:
+        main:
+            entity: { class: BionicUniversityUserBundle:User, property: email }
+
+    firewalls:
+        main:
+            pattern: /.*
+            form_login:
+                check_path: /login_check
+                login_path: /login
+                #default_target_path: admin_index
+            logout: true
+            security: true
+            anonymous: true
+
+    access_control:
+        - { path: /admin/.*, role: ROLE_ADMIN }
+        - { path: /.*, role: IS_AUTHENTICATED_ANONYMOUSLY }

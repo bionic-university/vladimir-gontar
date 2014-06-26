@@ -1,5 +1,4 @@
-{% extends '::base.html.twig' %}
-
+{% extends '::base_admin.html.twig' %}
 {% block body -%}
     <h1>{{ entity.name }}</h1>
 
@@ -40,11 +39,13 @@
                 Вернуться к списку
             </a>
         </li>
+        {% if showEdit %}
         <li>
             <a href="{{ path('article_edit', { 'id': entity.id }) }}">
                 Edit
             </a>
         </li>
         <li>{{ form(delete_form) }}</li>
+        {% endif %}
     </ul>
 {% endblock %}

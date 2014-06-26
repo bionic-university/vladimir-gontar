@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
 
             new BionicUniversity\NewsBundle\BionicUniversityNewsBundle(),
+            new BionicUniversity\UserBundle\BionicUniversityUserBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,0 +1,13 @@
+bionic_university_user_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: BionicUniversityUserBundle:Default:index }
+login_path :
+    pattern:  /login
+    defaults: { _controller: BionicUniversityUserBundle:Security:login}
+check_path :
+    pattern:  /login_check
+logout:
+    pattern:  /logout
+registration_path :
+    pattern:  /registration
+    defaults: { _controller: BionicUniversityUserBundle:Security:registration }

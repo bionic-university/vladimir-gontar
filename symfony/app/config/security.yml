@@ -1,19 +1,38 @@
 security:
     encoders:
+        BionicUniversity\UserBundle\Entity\User:
+                            algorithm: sha512
+                            encode-as-base64: true
+                            iterations: 10
         Symfony\Component\Security\Core\User\User: plaintext
 
     role_hierarchy:
+        ROLE_USER: IS_AUTHENTICATED_ANONYMOUSLY
         ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+#        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
+        #main:
+        #    entity: { class: BionicUniversityUserBundle:User, property: email }
         in_memory:
             memory:
                 users:
-                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
-                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+                    #user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+                    admin@admin.ua: { password: 123456, roles: [ 'ROLE_ADMIN' ] }
 
     firewalls:
+        main:
+            pattern: /.*
+            form_login:
+               check_path: /login_check
+               login_path: /login
+               default_target_path: admin_index
+               csrf_provider: form.csrf_provider
+            logout:
+               path:   /logout
+               target: /
+            security: true
+            anonymous: true
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
@@ -35,4 +54,7 @@ security:
             #    realm: "Secured Demo Area"
 
     access_control:
-        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+                - { path: /admin, role: ROLE_ADMIN }
+                - { path: /*/*/edit, role: ROLE_ADMIN }
+                - { path: /*/new, role: ROLE_ADMIN }
+                - { path: /.*, role: IS_AUTHENTICATED_ANONYMOUSLY }

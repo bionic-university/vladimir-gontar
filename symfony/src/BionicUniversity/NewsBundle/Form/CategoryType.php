@@ -15,11 +15,11 @@ class CategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('description')
+            ->add('name', null, array('label' => 'Название'))
+            ->add('description', null, array('label' => 'Описание'))
             //->add('count')
             //->add('parentId')
-            ->add('parent')
+            ->add('parent', null, array('label' => 'Родительская категория'))
         ;
     }
     
