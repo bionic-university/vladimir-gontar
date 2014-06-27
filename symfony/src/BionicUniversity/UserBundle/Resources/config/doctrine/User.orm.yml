@@ -23,6 +23,6 @@ BionicUniversity\UserBundle\Entity\User:
             type: string
             length: 255
         roles:
-            type: string
+            type: array
             length: 255
     lifecycleCallbacks: {  }

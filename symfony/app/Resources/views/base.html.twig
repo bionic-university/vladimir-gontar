@@ -54,12 +54,21 @@
                     <li><a href="{{ path('logout') }}">LOGOUT</a></li>
                 </ul>
             </div>
-            {% else %}
-                <div class="ym-hlist">
-                    <ul>
-                        <li><a href="{{ path('login_path') }}">Авторизация</a></li>
-                    </ul>
-                </div>
+        {% elseif is_granted('ROLE_USER') %}
+            <div class="ym-hlist">
+                <ul>
+                    <li><a href="#">Личный профиль</a></li>
+                    <li><a href="{{ path('logout') }}">LOGOUT</a></li>
+                </ul>
+            </div>
+        {% else %}
+
+
+            <div class="ym-hlist">
+                <ul>
+                    <li><a href="{{ path('login_path') }}">Авторизация</a></li>
+                </ul>
+            </div>
 
         {% endif %}
 
@@ -93,6 +102,7 @@
                             <li><a href="/article/tag/1">война</a></li>
                             <li><a href="/article/tag/2">смешно</a></li>
                             <li><a href="/article/tag/3">религия</a></li>
+                            <li><a href="/article/tag/4">выборы</a></li>
                         </ul>
                     </div>
                 </aside>

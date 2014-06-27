@@ -12,14 +12,20 @@ security:
 #        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
-        #main:
-        #    entity: { class: BionicUniversityUserBundle:User, property: email }
+        chain_provider:
+            chain:
+                providers: [in_memory, user]
         in_memory:
             memory:
                 users:
-                    #user:  { password: userpass, roles: [ 'ROLE_USER' ] }
                     admin@admin.ua: { password: 123456, roles: [ 'ROLE_ADMIN' ] }
-
+        user:
+            entity:
+                class: BionicUniversity\UserBundle\Entity\User
+                property: email
+                manager_name: ~
+        #main:
+        #    entity: { class: BionicUniversityUserBundle:User, property: email }
     firewalls:
         main:
             pattern: /.*

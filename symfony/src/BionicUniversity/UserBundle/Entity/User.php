@@ -45,6 +45,12 @@ class User implements UserInterface, \Serializable
         $this->roles = $roles;
     }
 
+    function __toString()
+    {
+        return $this->email;
+    }
+
+
     /**
      * Get id
      *
