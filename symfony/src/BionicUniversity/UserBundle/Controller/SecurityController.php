@@ -49,6 +49,9 @@ class SecurityController extends Controller{
             ->getForm();
         $form->handleRequest($request);
 
+
+        // TODO if password empty - generate password
+
         if($form->isValid()){
             $user->setEmail($form['email']->getData());
             $user->setSalt(md5(time()));
@@ -59,8 +62,27 @@ class SecurityController extends Controller{
             $em->persist($user);
             $em->flush();
 
+
+            // send email with login-password
+            // TODO test!
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Регистрация на сайте знакомств LoveLal')
+                ->setFrom('unik.dating@mail.ru')
+                ->setTo($user->getEmail())
+                ->setBody(
+                    $this->renderView(
+                        'BionicUniversityUser:Security:register.email.txt.twig',
+                        array('login' => $user->getEmail(), 'password'=>$form['password']->getData())
+                    )
+                )
+            ;
+            $this->get('mailer')->send($message);
+
+
+
             return $this->redirect($this->generateUrl('login_path'));
         }
+
         return $this->render(
             'BionicUniversityUserBundle:Security:registration.html.twig',array('form'=>$form->createView(),
                 'error_message'=>$error_message)

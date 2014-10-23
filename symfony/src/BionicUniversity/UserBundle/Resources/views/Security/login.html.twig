@@ -3,14 +3,11 @@
 {% block title %}Авторизация{% endblock %}
 
 {% block body %}
-
-    {#{% block menu %}#}
-    {#{% endblock %}#}
     {% block content %}
         <h1>Авторизация
         </h1>
         <div>
-        <form action="{{ path('check_path') }}" method="POST">
+        <form action="{{ path('/login_check') }}" method="POST">
 
             <input type="text" class="input_login" id="username" placeholder="{% trans %}Email {% endtrans %}"
                    name="_username"/>
