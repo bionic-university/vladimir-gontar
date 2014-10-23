@@ -18,7 +18,11 @@
         "sensio/distribution-bundle": "~3.0",
         "sensio/framework-extra-bundle": "~3.0",
         "incenteev/composer-parameter-handler": "~2.0",
-        "components/jquery": "dev-master"
+        "components/jquery": "dev-master",
+        "doctrine/doctrine-fixtures-bundle": "2.2.*@dev",
+        "sonata-project/admin-bundle": "*",
+        "sonata-project/doctrine-orm-admin-bundle": "*",
+        "sonata-project/core-bundle": "~2.2@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"
