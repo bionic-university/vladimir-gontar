@@ -53,6 +53,10 @@ class PostController extends Controller
             $em->persist($entity);
             $em->flush();
 
+
+            $this->get('image_resizer')->resize();
+
+
             return $this->redirect($this->generateUrl('post_show', array('id' => $entity->getId())));
         }
 

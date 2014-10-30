@@ -19,3 +19,7 @@ parameters:
     debug_toolbar:          true
     debug_redirects:        false
     use_assetic_controller: true
+
+    thumb_size_height: 25
+    thumb_size_width: 25
+    translit_mode: standart

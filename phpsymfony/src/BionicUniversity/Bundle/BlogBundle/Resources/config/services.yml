@@ -1,0 +1,13 @@
+parameters:
+services:
+    image_resizer:
+        class: BionicUniversity\Bundle\BlogBundle\Resizer\ImageResizer
+        arguments: [%thumb_size_height%, %thumb_size_width%]
+        calls:
+            - [setImageService, [@imagine, @filesystem] ]
+    imagine:
+        public: false
+        class: Imagine\Imagick\Imagine
+    transliterator:
+        class: BionicUniversity\Bundle\BlogBundle\TextServices\Transliterator
+        arguments: [%translit_mode%]
