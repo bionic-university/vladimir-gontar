@@ -25,5 +25,6 @@ class Transliterator implements TransliteratorInterface {
 
     public function translit($str){
         echo('transliterated with mode ' . $this->mode);
+        return $str;
     }
 } 

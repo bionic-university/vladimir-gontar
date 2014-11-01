@@ -47,6 +47,8 @@ class ImageResizer implements ResizerInterface
         if (null !== $this->imageService) {
             echo 'Resized';
             die;
+        } else {
+            echo "imageService is null";
         }
     }
 }

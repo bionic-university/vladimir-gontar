@@ -6,8 +6,16 @@ services:
         calls:
             - [setImageService, [@imagine, @filesystem] ]
     imagine:
-        public: false
+        public: true
         class: Imagine\Imagick\Imagine
     transliterator:
         class: BionicUniversity\Bundle\BlogBundle\TextServices\Transliterator
         arguments: [%translit_mode%]
+    reverser:
+        class: BionicUniversity\Bundle\BlogBundle\TextServices\Reverse
+    alias:
+        class: BionicUniversity\Bundle\BlogBundle\TextServices\Aliaser
+        arguments: [%alias_word_separator%]
+        calls:
+            - [setTransliterator, [@transliterator]]
+

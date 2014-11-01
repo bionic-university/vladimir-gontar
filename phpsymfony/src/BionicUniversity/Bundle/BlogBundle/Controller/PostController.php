@@ -54,7 +54,9 @@ class PostController extends Controller
             $em->flush();
 
 
-            $this->get('image_resizer')->resize();
+            //$this->get('image_resizer')->resize();
+            //$this->get('transliterator')->translit('входной текст');
+            $this->get('alias')->makeAlias('какой-то текст');
 
 
             return $this->redirect($this->generateUrl('post_show', array('id' => $entity->getId())));
