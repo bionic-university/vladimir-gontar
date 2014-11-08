@@ -48,6 +48,25 @@ class Comment
      */
     private $post;
 
+    /**
+     * @var Category
+     */
+    private $parent;
+    private $children;
+    private $path;
+    private $slug;
+    /**
+     * @ORM\PrePersist()
+     */
+    public function updateSlug(){
+        $this->slug = \Transliterator::create(1)->transliterate($this->name);
+    }
+    public function updatePath()
+    {
+        while (null === $this->parent) {
+            $this->path .= '/' . $this->parent->getPath();
+        }
+    }
 
     /**
      * Get id

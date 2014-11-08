@@ -22,8 +22,12 @@ services:
         class: BionicUniversity\Bundle\BlogBundle\EventListener\AuthTokenListener
         tags:
             - {name: kernel.event_listener, event: kernel.request}
-    blog_subscriber:
-        class: BionicUniversity\Bundle\BlogBundle\Subscriber\BlogSubscriber
-        tags:
-            - {name: kernel.event_subscriber}
+#    blog_subscriber:
+#        class: BionicUniversity\Bundle\BlogBundle\Subscriber\BlogSubscriber
+#        tags:
+#            - {name: kernel.event_subscriber}
+#    post_listener:
+#        class: BionicUniversity\Bundle\BlogBundle\EventListener\PostListener
+#        tags:
+#            - {name: doctrine.event_listener, event: prePersist, connection: default}
 

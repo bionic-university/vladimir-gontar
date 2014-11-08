@@ -54,6 +54,30 @@ class Post
      */
     private $user;
 
+    /**
+     * @var \DateTime
+     *
+     */
+    private $createdAt;
+
+    /**
+     * @param \DateTime $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+
+
     function __construct()
     {
         $this->comments = new ArrayCollection();

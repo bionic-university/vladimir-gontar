@@ -1,27 +1,27 @@
 <?php
 
-namespace BionicUniversity\Bundle\BlogBundle\Controller;
+namespace BionicUniversity\Bundle\ProjectBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use BionicUniversity\Bundle\BlogBundle\Entity\Post;
-use BionicUniversity\Bundle\BlogBundle\Form\PostType;
+use BionicUniversity\Bundle\ProjectBundle\Entity\Project;
+use BionicUniversity\Bundle\ProjectBundle\Form\ProjectType;
 
 /**
- * Post controller.
+ * Project controller.
  *
- * @Route("/post")
+ * @Route("/project")
  */
-class PostController extends Controller
+class ProjectController extends Controller
 {
 
     /**
-     * Lists all Post entities.
+     * Lists all Project entities.
      *
-     * @Route("/", name="post")
+     * @Route("/", name="project")
      * @Method("GET")
      * @Template()
      */
@@ -29,38 +29,31 @@ class PostController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('BionicUniversityBlogBundle:Post')->findAll();
+        $entities = $em->getRepository('BionicUniversityProjectBundle:Project')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new Post entity.
+     * Creates a new Project entity.
      *
-     * @Route("/", name="post_create")
+     * @Route("/", name="project_create")
      * @Method("POST")
-     * @Template("BionicUniversityBlogBundle:Post:new.html.twig")
+     * @Template("BionicUniversityProjectBundle:Project:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new Post();
+        $entity = new Project();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            // call PostListener ;
             $em->persist($entity);
             $em->flush();
 
-
-            //$this->get('image_resizer')->resize();
-            //$this->get('transliterator')->translit('входной текст');
-            $this->get('alias')->makeAlias('какой-то текст');
-
-
-            return $this->redirect($this->generateUrl('post_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('project_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -70,16 +63,16 @@ class PostController extends Controller
     }
 
     /**
-     * Creates a form to create a Post entity.
+     * Creates a form to create a Project entity.
      *
-     * @param Post $entity The entity
+     * @param Project $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Post $entity)
+    private function createCreateForm(Project $entity)
     {
-        $form = $this->createForm(new PostType(), $entity, array(
-            'action' => $this->generateUrl('post_create'),
+        $form = $this->createForm(new ProjectType(), $entity, array(
+            'action' => $this->generateUrl('project_create'),
             'method' => 'POST',
         ));
 
@@ -89,15 +82,15 @@ class PostController extends Controller
     }
 
     /**
-     * Displays a form to create a new Post entity.
+     * Displays a form to create a new Project entity.
      *
-     * @Route("/new", name="post_new")
+     * @Route("/new", name="project_new")
      * @Method("GET")
      * @Template()
      */
     public function newAction()
     {
-        $entity = new Post();
+        $entity = new Project();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -107,9 +100,9 @@ class PostController extends Controller
     }
 
     /**
-     * Finds and displays a Post entity.
+     * Finds and displays a Project entity.
      *
-     * @Route("/{id}", name="post_show")
+     * @Route("/{id}", name="project_show")
      * @Method("GET")
      * @Template()
      */
@@ -117,10 +110,10 @@ class PostController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('BionicUniversityBlogBundle:Post')->find($id);
+        $entity = $em->getRepository('BionicUniversityProjectBundle:Project')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Post entity.');
+            throw $this->createNotFoundException('Unable to find Project entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -132,9 +125,9 @@ class PostController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing Post entity.
+     * Displays a form to edit an existing Project entity.
      *
-     * @Route("/{id}/edit", name="post_edit")
+     * @Route("/{id}/edit", name="project_edit")
      * @Method("GET")
      * @Template()
      */
@@ -142,10 +135,10 @@ class PostController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('BionicUniversityBlogBundle:Post')->find($id);
+        $entity = $em->getRepository('BionicUniversityProjectBundle:Project')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Post entity.');
+            throw $this->createNotFoundException('Unable to find Project entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -159,16 +152,16 @@ class PostController extends Controller
     }
 
     /**
-    * Creates a form to edit a Post entity.
+    * Creates a form to edit a Project entity.
     *
-    * @param Post $entity The entity
+    * @param Project $entity The entity
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createEditForm(Post $entity)
+    private function createEditForm(Project $entity)
     {
-        $form = $this->createForm(new PostType(), $entity, array(
-            'action' => $this->generateUrl('post_update', array('id' => $entity->getId())),
+        $form = $this->createForm(new ProjectType(), $entity, array(
+            'action' => $this->generateUrl('project_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -177,20 +170,20 @@ class PostController extends Controller
         return $form;
     }
     /**
-     * Edits an existing Post entity.
+     * Edits an existing Project entity.
      *
-     * @Route("/{id}", name="post_update")
+     * @Route("/{id}", name="project_update")
      * @Method("PUT")
-     * @Template("BionicUniversityBlogBundle:Post:edit.html.twig")
+     * @Template("BionicUniversityProjectBundle:Project:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('BionicUniversityBlogBundle:Post')->find($id);
+        $entity = $em->getRepository('BionicUniversityProjectBundle:Project')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Post entity.');
+            throw $this->createNotFoundException('Unable to find Project entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -200,7 +193,7 @@ class PostController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('post_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('project_edit', array('id' => $id)));
         }
 
         return array(
@@ -210,9 +203,9 @@ class PostController extends Controller
         );
     }
     /**
-     * Deletes a Post entity.
+     * Deletes a Project entity.
      *
-     * @Route("/{id}", name="post_delete")
+     * @Route("/{id}", name="project_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -222,21 +215,21 @@ class PostController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('BionicUniversityBlogBundle:Post')->find($id);
+            $entity = $em->getRepository('BionicUniversityProjectBundle:Project')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Post entity.');
+                throw $this->createNotFoundException('Unable to find Project entity.');
             }
 
             $em->remove($entity);
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('post'));
+        return $this->redirect($this->generateUrl('project'));
     }
 
     /**
-     * Creates a form to delete a Post entity by id.
+     * Creates a form to delete a Project entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -245,7 +238,7 @@ class PostController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('post_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('project_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
