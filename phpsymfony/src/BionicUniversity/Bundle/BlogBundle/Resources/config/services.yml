@@ -18,4 +18,8 @@ services:
         arguments: [%alias_word_separator%]
         calls:
             - [setTransliterator, [@transliterator]]
+    auth_token_listener:
+        class: BionicUniversity\Bundle\BlogBundle\EventListener\AuthTokenListener
+        tags:
+            - {name: kernel.event_listener, event: kernel.request}
 
