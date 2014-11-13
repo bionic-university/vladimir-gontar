@@ -15,18 +15,19 @@ class StatusType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-        ;
+            ->add('name');
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'BionicUniversity\Bundle\ProjectBundle\Entity\Status'
-        ));
+        $resolver->setDefaults(
+            array(
+                'data_class' => 'BionicUniversity\Bundle\ProjectBundle\Entity\Status'
+            )
+        );
     }
 
     /**

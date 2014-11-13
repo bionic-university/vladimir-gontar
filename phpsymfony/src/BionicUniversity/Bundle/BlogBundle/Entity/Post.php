@@ -77,7 +77,6 @@ class Post
     }
 
 
-
     function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -87,7 +86,7 @@ class Post
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -110,7 +109,7 @@ class Post
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -133,7 +132,7 @@ class Post
     /**
      * Get text
      *
-     * @return string 
+     * @return string
      */
     public function getText()
     {

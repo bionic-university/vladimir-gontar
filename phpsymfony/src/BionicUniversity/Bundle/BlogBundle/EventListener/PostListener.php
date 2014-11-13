@@ -16,6 +16,7 @@ class PostListener
      * @var SecurityContextInterface
      */
     private $securityContext;
+
     /**
      * @param SecurityContextInterface $securityContext
      */
@@ -23,6 +24,7 @@ class PostListener
     {
         $this->securityContext = $securityContext;
     }
+
     public function prePersist(OnFlushEventArgs $event)
     {
         $entity = $event->getObject();

@@ -12,7 +12,8 @@ use BionicUniversity\Bundle\ProjectBundle\Entity\Project;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class ProjectListener {
+class ProjectListener
+{
 
     protected $container;
 
@@ -21,10 +22,11 @@ class ProjectListener {
         $this->container = $container;
     }
 
-    public function prePersist(LifecycleEventArgs $event){
+    public function prePersist(LifecycleEventArgs $event)
+    {
         $entity = $event->getObject();
-        if ($entity instanceof Project){
-            $em= $this->container->get('doctrine')->getManager();
+        if ($entity instanceof Project) {
+            $em = $this->container->get('doctrine')->getManager();
             $status = $em->getRepository('BionicUniversityProjectBundle:Status')->find(1);
             $entity->setStatus($status);
         }

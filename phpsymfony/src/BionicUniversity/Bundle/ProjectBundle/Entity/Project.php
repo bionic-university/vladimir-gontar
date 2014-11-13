@@ -81,11 +81,10 @@ class Project
     }
 
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -108,7 +107,7 @@ class Project
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -131,7 +130,7 @@ class Project
     /**
      * Get budget
      *
-     * @return integer 
+     * @return integer
      */
     public function getBudget()
     {

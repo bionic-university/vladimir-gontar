@@ -67,11 +67,10 @@ class User
     }
 
 
-
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -94,7 +93,7 @@ class User
     /**
      * Get firstName
      *
-     * @return string 
+     * @return string
      */
     public function getFirstName()
     {
@@ -117,7 +116,7 @@ class User
     /**
      * Get lastName
      *
-     * @return string 
+     * @return string
      */
     public function getLastName()
     {
@@ -143,12 +142,10 @@ class User
     }
 
 
-
     function __toString()
     {
         return $this->getFirstName() . ' ' . $this->getLastName();
     }
-
 
 
 }

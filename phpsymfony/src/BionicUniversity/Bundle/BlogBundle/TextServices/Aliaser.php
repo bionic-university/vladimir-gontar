@@ -35,6 +35,7 @@ class Aliaser implements AliaserInterface
         $this->transliterator->translit($str);
         echo 'magic_alias_ready';
         die;
+
         return 'magic_alias_ready';
     }
 } 

@@ -55,12 +55,15 @@ class Comment
     private $children;
     private $path;
     private $slug;
+
     /**
      * @ORM\PrePersist()
      */
-    public function updateSlug(){
+    public function updateSlug()
+    {
         $this->slug = \Transliterator::create(1)->transliterate($this->name);
     }
+
     public function updatePath()
     {
         while (null === $this->parent) {
@@ -71,7 +74,7 @@ class Comment
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -94,7 +97,7 @@ class Comment
     /**
      * Get text
      *
-     * @return string 
+     * @return string
      */
     public function getText()
     {
@@ -117,7 +120,7 @@ class Comment
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {

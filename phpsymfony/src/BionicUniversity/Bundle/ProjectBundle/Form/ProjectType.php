@@ -18,18 +18,19 @@ class ProjectType extends AbstractType
             ->add('name')
             ->add('budget')
             ->add('user')
-            ->add('status')
-        ;
+            ->add('status');
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'BionicUniversity\Bundle\ProjectBundle\Entity\Project'
-        ));
+        $resolver->setDefaults(
+            array(
+                'data_class' => 'BionicUniversity\Bundle\ProjectBundle\Entity\Project'
+            )
+        );
     }
 
     /**

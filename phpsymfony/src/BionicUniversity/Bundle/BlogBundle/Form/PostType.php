@@ -18,18 +18,19 @@ class PostType extends AbstractType
             ->add('name')
             ->add('text')
             ->add('category')
-            ->add('user')
-        ;
+            ->add('user');
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'BionicUniversity\Bundle\BlogBundle\Entity\Post'
-        ));
+        $resolver->setDefaults(
+            array(
+                'data_class' => 'BionicUniversity\Bundle\BlogBundle\Entity\Post'
+            )
+        );
     }
 
     /**

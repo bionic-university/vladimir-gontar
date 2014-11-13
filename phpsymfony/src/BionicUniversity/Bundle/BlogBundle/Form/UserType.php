@@ -17,18 +17,19 @@ class UserType extends AbstractType
         $builder
             ->add('firstName')
             ->add('lastName')
-            ->add('email')
-        ;
+            ->add('email');
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'BionicUniversity\Bundle\BlogBundle\Entity\User'
-        ));
+        $resolver->setDefaults(
+            array(
+                'data_class' => 'BionicUniversity\Bundle\BlogBundle\Entity\User'
+            )
+        );
     }
 
     /**

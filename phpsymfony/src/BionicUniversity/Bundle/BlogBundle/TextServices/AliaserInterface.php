@@ -9,6 +9,7 @@
 namespace BionicUniversity\Bundle\BlogBundle\TextServices;
 
 
-interface AliaserInterface {
+interface AliaserInterface
+{
     public function makeAlias($str);
 } 

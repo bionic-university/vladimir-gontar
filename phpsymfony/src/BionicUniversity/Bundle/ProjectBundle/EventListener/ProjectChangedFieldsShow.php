@@ -11,14 +11,16 @@ namespace BionicUniversity\Bundle\ProjectBundle\EventListener;
 use BionicUniversity\Bundle\ProjectBundle\Entity\Project;
 use Doctrine\Common\Persistence\Event\LifecycleEventArgs;
 
-class ProjectChangedFieldsShow {
+class ProjectChangedFieldsShow
+{
 
-    public function preUpdate(LifecycleEventArgs $eventArgs){
+    public function preUpdate(LifecycleEventArgs $eventArgs)
+    {
         $entity = $eventArgs->getObject();
-        if ($entity instanceof Project){
+        if ($entity instanceof Project) {
             $changeSet = $changeArray = $eventArgs->getEntityChangeSet();
             // если нету изменений - сюда не попадем вообще
-            echo('Changed fields: '.implode(', ', array_keys($changeSet)));
+            echo('Changed fields: ' . implode(', ', array_keys($changeSet)));
             //exit();
         }
     }

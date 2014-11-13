@@ -9,7 +9,8 @@
 namespace BionicUniversity\Bundle\BlogBundle\TextServices;
 
 
-interface ReverseInterface {
+interface ReverseInterface
+{
 
     public function reverse($str);
 } 

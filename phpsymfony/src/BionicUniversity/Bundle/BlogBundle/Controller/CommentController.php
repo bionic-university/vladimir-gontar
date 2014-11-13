@@ -35,6 +35,7 @@ class CommentController extends Controller
             'entities' => $entities,
         );
     }
+
     /**
      * Creates a new Comment entity.
      *
@@ -58,7 +59,7 @@ class CommentController extends Controller
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -71,10 +72,14 @@ class CommentController extends Controller
      */
     private function createCreateForm(Comment $entity)
     {
-        $form = $this->createForm(new CommentType(), $entity, array(
-            'action' => $this->generateUrl('comment_create'),
-            'method' => 'POST',
-        ));
+        $form = $this->createForm(
+            new CommentType(),
+            $entity,
+            array(
+                'action' => $this->generateUrl('comment_create'),
+                'method' => 'POST',
+            )
+        );
 
         $form->add('submit', 'submit', array('label' => 'Create'));
 
@@ -91,11 +96,11 @@ class CommentController extends Controller
     public function newAction()
     {
         $entity = new Comment();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -119,7 +124,7 @@ class CommentController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -145,30 +150,35 @@ class CommentController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
 
     /**
-    * Creates a form to edit a Comment entity.
-    *
-    * @param Comment $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Comment entity.
+     *
+     * @param Comment $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Comment $entity)
     {
-        $form = $this->createForm(new CommentType(), $entity, array(
-            'action' => $this->generateUrl('comment_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
+        $form = $this->createForm(
+            new CommentType(),
+            $entity,
+            array(
+                'action' => $this->generateUrl('comment_update', array('id' => $entity->getId())),
+                'method' => 'PUT',
+            )
+        );
 
         $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
+
     /**
      * Edits an existing Comment entity.
      *
@@ -197,11 +207,12 @@ class CommentController extends Controller
         }
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
+
     /**
      * Deletes a Comment entity.
      *
@@ -241,7 +252,6 @@ class CommentController extends Controller
             ->setAction($this->generateUrl('comment_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

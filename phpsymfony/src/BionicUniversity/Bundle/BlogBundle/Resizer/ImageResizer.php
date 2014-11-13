@@ -7,7 +7,9 @@
  */
 
 namespace BionicUniversity\Bundle\BlogBundle\Resizer;
+
 use Imagine\Image\ImagineInterface;
+
 /**
  * Created by PhpStorm.
  * User: askent
@@ -19,6 +21,7 @@ class ImageResizer implements ResizerInterface
     private $height;
     private $width;
     private $filesystem;
+
     /**
      * @param mixed $filesystem
      */
@@ -26,15 +29,18 @@ class ImageResizer implements ResizerInterface
     {
         $this->filesystem = $filesystem;
     }
+
     /**
      * @var ImagineInterface
      */
     private $imageService;
+
     public function __construct($height, $width)
     {
         $this->height = $height;
         $this->width = $width;
     }
+
     /**
      * @param ImagineInterface $imageService
      */
@@ -42,6 +48,7 @@ class ImageResizer implements ResizerInterface
     {
         $this->imageService = $imageService;
     }
+
     public function resize()
     {
         if (null !== $this->imageService) {

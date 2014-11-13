@@ -11,7 +11,8 @@ namespace BionicUniversity\Bundle\BlogBundle\TextServices;
 
 use Symfony\Component\Translation\Tests\String;
 
-class Transliterator implements TransliteratorInterface {
+class Transliterator implements TransliteratorInterface
+{
 
     /**
      * @var String
@@ -23,8 +24,10 @@ class Transliterator implements TransliteratorInterface {
         $this->mode = $mode;
     }
 
-    public function translit($str){
+    public function translit($str)
+    {
         echo('transliterated with mode ' . $this->mode);
+
         return $str;
     }
 } 

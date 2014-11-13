@@ -17,8 +17,9 @@ class UserListener
     public function prePersist(LifecycleEventArgs $event)
     {
         $entity = $event->getObject();
-        if ($entity instanceof User){
-            echo('send email to admin about new user ' . $entity->getFirstName() . ' ' . $entity->getLastName()); // TODO send mail
+        if ($entity instanceof User) {
+            echo('send email to admin about new user ' . $entity->getFirstName() . ' ' . $entity->getLastName(
+                )); // TODO send mail
             //exit();
         }
 

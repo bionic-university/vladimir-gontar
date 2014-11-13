@@ -18,18 +18,19 @@ class CommentType extends AbstractType
             ->add('text')
             ->add('createdAt')
             ->add('user')
-            ->add('post')
-        ;
+            ->add('post');
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        $resolver->setDefaults(array(
-            'data_class' => 'BionicUniversity\Bundle\BlogBundle\Entity\Comment'
-        ));
+        $resolver->setDefaults(
+            array(
+                'data_class' => 'BionicUniversity\Bundle\BlogBundle\Entity\Comment'
+            )
+        );
     }
 
     /**
