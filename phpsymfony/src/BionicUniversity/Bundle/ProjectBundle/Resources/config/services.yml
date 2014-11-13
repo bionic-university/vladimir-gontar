@@ -2,3 +2,20 @@ services:
 #    bionic_university_project.example:
 #        class: BionicUniversity\Bundle\ProjectBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+    email_sender_on_user_create:
+        class: BionicUniversity\Bundle\ProjectBundle\EventListener\UserListener
+        tags:
+            - {name: doctrine.event_listener, event: prePersist, connection: default}
+    default_status_for_project:
+        class: BionicUniversity\Bundle\ProjectBundle\EventListener\ProjectListener
+        arguments: [ @service_container ]
+        tags:
+            - {name: doctrine.event_listener, event: prePersist, connection: default}
+    add_user_to_project:
+        class: BionicUniversity\Bundle\ProjectBundle\EventListener\UserAssign
+        tags:
+            - {name: doctrine.event_subscriber, connection: default}
+    project_changed_fields_show:
+        class: BionicUniversity\Bundle\ProjectBundle\EventListener\ProjectChangedFieldsShow
+        tags:
+            - {name: doctrine.event_listener, event: preUpdate, connection: default}

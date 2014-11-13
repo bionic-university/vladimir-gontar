@@ -37,16 +37,18 @@ class User
     private $lastName;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime")
+     */
+    private $created;
+
+    /**
      * @var
      * @ORM\OneToMany(targetEntity="BionicUniversity\Bundle\ProjectBundle\Entity\Project", mappedBy="user")
      */
     private $projects;
 
-    /**
-     * @var \DateTime
-     * @ORM\\Column(type="datetime")
-     */
-    private $created;
 
     /**
      * @param mixed $projects
@@ -123,6 +125,8 @@ class User
     }
 
     /**
+     * @param \DateTime $created
+     *
      * @ORM\PrePersist()
      */
     public function setCreated()
@@ -139,10 +143,12 @@ class User
     }
 
 
+
     function __toString()
     {
         return $this->getFirstName() . ' ' . $this->getLastName();
     }
+
 
 
 }
